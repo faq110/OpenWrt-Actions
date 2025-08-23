@@ -1,5 +1,8 @@
 # 添加其他仓库的插件 然后去config里添加上对应的插件名
-# git clone  https://github.com/gdy666/luci-app-lucky package/lucky
+# 流量监控
+git clone https://github.com/timsaya/luci-app-bandix package/luci-app-bandix
+git clone https://github.com/timsaya/openwrt-bandix package/openwrt-bandix
+sed -i "s/Bandix 流量监控/流量监控/g" $(find ./package/luci-app-bandix/ -type f -name "bandix.po")
 
 # 修改默认IP
 sed -i 's/192.168.1.1/192.168.12.1/g' package/base-files/files/bin/config_generate
