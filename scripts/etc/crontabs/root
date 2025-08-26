@@ -1,4 +1,4 @@
-# 定时重启
+# 定时重启（每个星期六凌晨2点50）
 #50 2 * * 6 sleep 5 && touch /etc/banner && reboot
 # 定时重启网络-更换IP
-#50 2 * * * /etc/init.d/network restart
+#50 2 * * 6 /etc/init.d/network restart
