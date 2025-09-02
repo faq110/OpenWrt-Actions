@@ -23,6 +23,8 @@ sed -i 's/option rebind_protection 1/option rebind_protection 0/g' package/netwo
 
 # 修改插件位置
 sed -i 's/vpn/services/g' feeds/luci/applications/luci-app-zerotier/root/usr/share/luci/menu.d/luci-app-zerotier.json
+sed -i 's/nas/services/g' feeds/luci/applications/luci-app-aria2/root/usr/share/luci/menu.d/luci-app-aria2.json
+sed -i 's/nas/services/g' feeds/luci/applications/luci-app-samba4/root/usr/share/luci/menu.d/luci-app-samba4.json
 
 # etc默认设置
 cp -a $GITHUB_WORKSPACE/scripts/etc/* package/base-files/files/etc/
