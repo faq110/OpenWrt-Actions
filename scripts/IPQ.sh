@@ -17,6 +17,8 @@ rm -rf feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/stat
 rm -rf feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/50_dsl.js
 rm -rf feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/60_wifi.js
 rm -rf feeds/luci/applications/luci-app-ddns/htdocs/luci-static/resources/view/status/include/70_ddns.js
+rm -rf feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/index.js
+cp -f $GITHUB_WORKSPACE/scripts/index.js feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/index.js
 sed -i "38,47d" $(find ./feeds/ -type f -name "20_memory.js")
 sed -i 's/ECM://g' target/linux/qualcommax/base-files/sbin/cpuusage
 sed -i 's/HWE/NPU/g' target/linux/qualcommax/base-files/sbin/cpuusage
@@ -29,13 +31,6 @@ sed -i 's/vpn/services/g' feeds/luci/applications/luci-app-zerotier/root/usr/sha
 
 # etc默认设置
 cp -a $GITHUB_WORKSPACE/scripts/etc/* package/base-files/files/etc/
-
-# 修改WIFI设置
-sed -i 's/OWRT/OpenWrt/g' target/linux/qualcommax/base-files/etc/uci-defaults/990_set-wireless.sh
-sed -i 's/12345678/password/g' target/linux/qualcommax/base-files/etc/uci-defaults/990_set-wireless.sh
-
-# 修改qca-nss-drv启动顺序
-sed -i 's/START=.*/START=85/g' feeds/nss_packages/qca-nss-drv/files/qca-nss-drv.init
 
 ./scripts/feeds update -a
 ./scripts/feeds install -a

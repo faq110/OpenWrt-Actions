@@ -17,6 +17,8 @@ rm -rf feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/stat
 rm -rf feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/50_dsl.js
 rm -rf feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/60_wifi.js
 rm -rf feeds/luci/applications/luci-app-ddns/htdocs/luci-static/resources/view/status/include/70_ddns.js
+rm -rf feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/index.js
+cp -f $GITHUB_WORKSPACE/scripts/index.js feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/index.js
 sed -i "38,47d" $(find ./feeds/ -type f -name "20_memory.js")
 
 # 关闭RFC1918
